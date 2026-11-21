@@ -13,7 +13,7 @@ Your project is either on your **own account** (the free trial) or on the **cour
 - **Course account:** skip this. Your project already has a hard cap of €50 a month: past it, billing is switched off and everything stops.
 
 ## 3. Create a bucket with Terraform
-Open **Cloud Shell** (the `>_` icon, top right of the console). Terraform is already installed there.
+Open **Cloud Shell** (the `>_` icon, top right of the console). Terraform is already installed there. Do the three [Cloud Shell tips](../../setup/gcp.md#cloud-shell-tips) once before you start.
 
 ```bash
 git clone https://github.com/sham100768/cloud-computing-srh.git
@@ -47,5 +47,6 @@ Nothing today bills by the hour, and an empty bucket costs nothing, so leave it:
 - **Card verification fails, or the sign-up is blocked:** try another card. If it still fails, tell me and I'll give you a project on the course account: see [setup/hosted-project.md](../../setup/hosted-project.md).
 - **`Error 403` or "API not enabled":** the error message contains a link. Open it, enable the API, wait a minute, apply again.
 - **"Bucket name not available":** names are global. Check `project_id` in `terraform.tfvars` is your own.
+- **Repo folder gone, or Terraform needs reinstalling every session:** see the [Cloud Shell tips](../../setup/gcp.md#cloud-shell-tips).
 - **Wrong project:** run `gcloud config get-value project` and compare it with your project ID.
 - **Course account: `billing is disabled`:** your project hit its cap. Tell me.

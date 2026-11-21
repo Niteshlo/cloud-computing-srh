@@ -26,3 +26,18 @@ Budgets only send emails; they don't stop anything. Stop Dataflow jobs and scale
 ## Course account: a project I host for you
 
 If the free-trial sign-up doesn't work for you, send me the Gmail address you want to use. Then follow [hosted-project.md](hosted-project.md).
+
+## Cloud Shell tips
+
+Most workshops run in Cloud Shell. It keeps everything in your home folder (`~`) between sessions, and Terraform is already installed. You should never need to install anything. Do these once:
+
+1. **Turn off ephemeral mode.** In the Cloud Shell toolbar, open the **⋮** menu and check **Ephemeral mode** is off. If it's on, your home folder is wiped when the session ends, and you lose the repo, your `terraform.tfvars` and your Terraform state.
+2. **Share Terraform's downloads between sessions.** Each session's `starter/` folder is its own Terraform project, so `terraform init` downloads the Google provider again in each one. Run this once and it downloads only once:
+
+   ```bash
+   mkdir -p ~/.terraform.d/plugin-cache && echo 'plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"' > ~/.terraformrc
+   ```
+
+3. **Don't install Terraform yourself.** Anything installed outside your home folder, with `apt` or a downloaded file, is gone the next time Cloud Shell starts. Run `terraform version` to see the one that's already there.
+
+If your repo folder has disappeared, run `git clone` again. If `terraform apply` then says a bucket or table **already exists**, Terraform has lost its state: tell me, and we'll bring your resources back under Terraform with `terraform import`.
