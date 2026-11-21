@@ -12,22 +12,21 @@ The proposed Lambda architecture has two paths: a live path for shipment trackin
 ```mermaid
 flowchart TB
     subgraph LIVE["LIVE PATH — 60-second freshness"]
-        A["Carrier shipment tracking events"]
+        A["Carrier shipment tracking events — LIVE"]
         B["Pub/Sub — LIVE"]
         C["Dataflow streaming — LIVE"]
         D["Event-time processing and late-event handling — LIVE"]
         E["BigQuery live tables — LIVE"]
         F["Operations dashboard — LIVE"]
         G["Delay detection and alerts — LIVE"]
-        H["Warehouse team"]
-
+        H["Warehouse team — LIVE"]
         A --> B --> C --> D --> E
         E --> F
         E --> G --> H
     end
 
     subgraph BATCH["BATCH PATH — scheduled processing"]
-        J["Daily carrier files"]
+        J["Daily carrier files — BATCH"]
         K["Cloud Storage raw zone — BATCH"]
         L["BigQuery load jobs and SQL transformations — BATCH"]
         M["BigQuery curated tables — BATCH"]
